@@ -464,3 +464,27 @@ label.radio .emot .mouth.sad {
     width: 70%;
   }
 }
+
+.file-upload__label {
+  padding: 1em 1em;
+  color:#777 ;
+  background: #fff;
+  border-radius: 50px;
+  transition: background .3s;
+  position: relative;
+}
+.file-upload__label:hover, {
+	opacity: .8;
+}
+    
+.file-upload__input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 1;
+    width:0;
+    height: 100%;
+    opacity: 0;
+}

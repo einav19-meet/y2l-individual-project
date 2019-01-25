@@ -26,4 +26,3 @@ $secondButton.on("click", function(e){
   e.preventDefault();
 });
 
-// copy
