@@ -130,7 +130,7 @@ input{
 <body>
 
 	<center>
-         <header>
+         <!-- <header> -->
             <div class = "center">
                <div class="klaviyo_modal" id="k_id_modal" style="display:none; ">
     <div class="klaviyo_inner" style="width:50%; ">
@@ -232,49 +232,59 @@ input{
 
 <div class="wrapper">
   {% for op in opinions %}
-  <div class="wr-div" onclick="document.getElementById('modal-wrapper').style.display='block'" background-size: cover;>
-  <img src="op.image_url">
+  <div class="wr-div" onclick="document.getElementById('modal-wrapper{{ op.id }}').style.display='block'" background-size: cover;>
+  <img src="{{ op.image_url }}">
   <h2>{{ op.title }}</h2>
   <p>{{ op.name }}</p>
   </div>
 
-<div id="modal-wrapper" class="modal">
+<div id="modal-wrapper{{ op.id }}" class="modal" style="background-color: white; ">
   
         
     <div class="imgcontainer">
-      <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
-      <img src="1.png" alt="Avatar" class="avatar">
-      <h1 style="text-align:center">Modal Popup Box</h1>
+      <span onclick="document.getElementById('modal-wrapper{{ op.id }}').style.display='none'" class="close" title="Close PopUp">&times;</span>
     </div>
 
     <div class="container">
     <h2>{{op.title}}</h2>
     <p>{{op.name}}</p>
     <p>{{op.text}}</p>
-    <img src="{{op.image_url}}">
-      <a href="#" style="text-decoration:none; float:right; margin-right:34px; margin-top:26px;">Forgot Password ?</a>
+    <img src="{{ op.image_url }}">
     </div>
     
   
+
+
 </div>
-<script>
+  {% endfor %}
+  </div>
+
+</center>
+
+
+
+
+
+
+
+
+
+</center>
+
+
+{% for op in opinions %}
+
+  <script>
 // If user clicks anywhere outside of the modal, Modal will close
 
-var modal = document.getElementById('modal-wrapper');
+var modal = document.getElementById('modal-wrapper{{ op.id }}');
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
 }
 </script>
-  {% endfor %}
-
-</div>
-
-
-
-</center>
-
+{% endfor %}
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
       <script src="/static/js/temp.js"></script>
 </body>

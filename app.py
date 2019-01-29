@@ -21,6 +21,8 @@ def hello_world():
 	opinions.reverse()
 	if len(opinions) > 9:
 		opinions = opinions[0:8]
+	print("HELLO THERE")
+	print(opinions)
 	return render_template('index.html', opinions = opinions)
 
 
