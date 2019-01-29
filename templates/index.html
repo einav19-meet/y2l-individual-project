@@ -2,8 +2,12 @@
 <html>
 
 <head>
-	<link rel="stylesheet" type="text/css" href="/static/css/temp.css">
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="/static/css/temp.css">
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -29,7 +33,9 @@ font-family: 'Raleway', sans-serif;
   margin: -1.25em 0 0 -1.25em;
 
 }
-* {box-sizing: border-box;}
+* {
+  box-sizing: border-box;
+}
 
 .wr-div {
   vertical-align: baseline;      
@@ -40,8 +46,14 @@ font-family: 'Raleway', sans-serif;
 }
 .wr-div h2{
    display: inline-block;
+   background-color: white;
+  border-radius: 21px;
 }
-
+.wr-div p{
+   display: inline-block;
+   background-color: white;
+  border-radius: 21px;
+}
 .wraper .wr-div: hover {
   border-radius: 10px;
   background-color: yellow;
@@ -50,6 +62,68 @@ font-family: 'Raleway', sans-serif;
   transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
+.sea{
+
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: all 1s;
+    width: 50px;
+    height: 50px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 4px solid white;
+    padding: 5px;
+}
+
+input{
+  font-family: 'Raleway', sans-serif;
+    font-weight: lighter;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;;
+    height: 42.5px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 0 20px;
+    color: black;
+}
+
+.fa{
+    box-sizing: border-box;
+    padding: 10px;
+    width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: #07051a;
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 1s;
+}
+
+.sea:hover{
+    width: 200px;
+    cursor: pointer;
+}
+
+.sea:hover input{
+    display: block;
+}
+
+.sea:hover .fa{
+    background: #07051a;
+    color: white;
+}
 
 </style>
 </head>
@@ -94,11 +168,18 @@ font-family: 'Raleway', sans-serif;
 <nav>
                <div class="logo">
                   <img src="/static/img/navlogo.png" width="160px" height="auto" class=d-inline-block align-top" alt="">
-   
-               </div>
-               <div class="menu">
+                  </div>
+   <div class="place-search-div">
+                  <form action="" class="sea">
+  <input type="search">
+  <i class="fa fa-search"></i>
+</form>
+</div>
+            <div class="menu">
+
                   <ul>
            <li><a href="{{ url_for('forming') }} " style="text-decoration:none;color: inherit">Add Your Unpop</a></li>
+
                   </ul>
                </div>
             </nav>
@@ -148,26 +229,51 @@ font-family: 'Raleway', sans-serif;
 <br>
 <br>
 <br>
-<div class="wrapper">
-  <div class="wr-div" style="background-image: url('/static/img/denim.jpg'); background-size: cover;">
-  <h2>Tilte</h2>
 
+<div class="wrapper">
+  {% for op in opinions %}
+  <div class="wr-div" onclick="document.getElementById('modal-wrapper').style.display='block'" background-size: cover;>
+  <img src="op.image_url">
+  <h2>{{ op.title }}</h2>
+  <p>{{ op.name }}</p>
   </div>
-  <div class="wr-div">Two</div>
-  <div class="wr-div">Three</div>
-  <div class="wr-div">Four</div>
-  <div class="wr-div">Five</div>
-  <div class="wr-div">six</div>
-  <div class="wr-div">seven</div>
-  <div class="wr-div">eight</div>
-  <div class="wr-div">ten</div>
+
+<div id="modal-wrapper" class="modal">
+  
+        
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
+      <img src="1.png" alt="Avatar" class="avatar">
+      <h1 style="text-align:center">Modal Popup Box</h1>
+    </div>
+
+    <div class="container">
+    <h2>{{op.title}}</h2>
+    <p>{{op.name}}</p>
+    <p>{{op.text}}</p>
+    <img src="{{op.image_url}}">
+      <a href="#" style="text-decoration:none; float:right; margin-right:34px; margin-top:26px;">Forgot Password ?</a>
+    </div>
+    
+  
+</div>
+<script>
+// If user clicks anywhere outside of the modal, Modal will close
+
+var modal = document.getElementById('modal-wrapper');
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+  {% endfor %}
+
 </div>
 
+
+
 </center>
-
-
-    
-
 
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
       <script src="/static/js/temp.js"></script>

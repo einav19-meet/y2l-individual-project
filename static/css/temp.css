@@ -38,6 +38,14 @@ body {
       color: #fff;
 }
 
+.place-search-div{
+  line-height: 60px;
+  position: fixed;
+  float: left;
+  margin: 47px 46px;
+  color: #fff;
+  margin-left: 230px;
+}
 nav {
       position: fixed;
       width: 100%;
@@ -297,3 +305,4 @@ body {
 	background: #27AE60;
 	color: white;
 }
+

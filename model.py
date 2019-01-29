@@ -12,4 +12,5 @@ class Opinion(Base):
 	name = Column(String)
 	title = Column(String)
 	text = Column(String)
+	image_url = Column(String, default="/static/img/logo.png", nullable=False)
     
