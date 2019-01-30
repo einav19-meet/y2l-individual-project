@@ -37,3 +37,7 @@ def get_all_opinions():
 	opinions = session.query(Opinion).all()
 	return opinions
     
+
+def searcher(keyword):
+	objects = session.query(Opinion).filter((keyword in Opinion.name.lower()) or (keyword in Opinion.text.lower()) or (keyword in Opinion.title.lower())).all()
+	return objects

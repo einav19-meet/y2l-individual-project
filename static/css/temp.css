@@ -339,11 +339,6 @@ button:hover {
     text-align: center;
     margin: 24px 0 12px 0;
     position: relative;
-    background-color: white;
-}
-
-.container{
-  background-color: white;
 }
 .avatar {
     width: 200px;

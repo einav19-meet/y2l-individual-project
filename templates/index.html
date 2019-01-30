@@ -41,18 +41,21 @@ font-family: 'Raleway', sans-serif;
   vertical-align: baseline;      
   border-radius: 5px;
   padding: 1em;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 15px 20px 0 rgba(0, 0, 0, 0.19);
   transition: transform .2s; /* Animation */
 }
 .wr-div h2{
    display: inline-block;
-   background-color: white;
-  border-radius: 21px;
+   background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 30px;
+  padding: 10px;
 }
 .wr-div p{
    display: inline-block;
-   background-color: white;
+   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 21px;
+    padding: 10px;
+
 }
 .wraper .wr-div: hover {
   border-radius: 10px;
@@ -124,7 +127,11 @@ input{
     background: #07051a;
     color: white;
 }
-
+   /* Make the image fully responsive */
+  .carousel-inner img {
+      width: 100%;
+      height: 100%;
+  }
 </style>
 </head>
 <body>
@@ -230,12 +237,12 @@ input{
 <br>
 <br>
 
-<div class="wrapper">
+<div class="wrapper" >
   {% for op in opinions %}
-  <div class="wr-div" onclick="document.getElementById('modal-wrapper{{ op.id }}').style.display='block'" background-size: cover;>
-  <img src="{{ op.image_url }}">
+  <div class="wr-div" onclick="document.getElementById('modal-wrapper{{ op.id }}').style.display='block'" style="background-size: cover; background-image: url('{{ op.image_url }}');">
   <h2>{{ op.title }}</h2>
-  <p>{{ op.name }}</p>
+  <br>
+  <p>By {{ op.name }}</p>
   </div>
 
 <div id="modal-wrapper{{ op.id }}" class="modal" style="background-color: white; ">
@@ -247,9 +254,9 @@ input{
 
     <div class="container">
     <h2>{{op.title}}</h2>
-    <p>{{op.name}}</p>
+    <p>By {{op.name}}</p>
     <p>{{op.text}}</p>
-    <img src="{{ op.image_url }}">
+    <img src="{{ op.image_url }}" style="width: 50%; height: 50%">
     </div>
     
   
@@ -260,15 +267,6 @@ input{
   </div>
 
 </center>
-
-
-
-
-
-
-
-
-
 </center>
 
 
@@ -285,7 +283,21 @@ window.onclick = function(event) {
 }
 </script>
 {% endfor %}
+<br>
+<br>
+<br>
+
+    <div >
+        <img src="/static/img/letus.jpg" alt="Los Angeles" width="100%" height="auto">
+    <img src="/static/img/denim.jpg" alt="Los Angeles" width="100%" height="auto">
+    <img src="/static/img/harrypotter.jpg" alt="Los Angeles" width="100%" height="auto">
+    <img src="/static/img/sein.jpg" alt="Los Angeles" width="100%" height="auto">
+
+</div>
+
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
       <script src="/static/js/temp.js"></script>
+
+      
 </body>
 </html>
