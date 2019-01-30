@@ -3,7 +3,7 @@ from database import get_all_opinions, create_opinion, get_id, change_url, touch
 from werkzeug.utils import secure_filename
 import os 
 
-ON_COMPUTER = True
+ON_COMPUTER = False
 
 app = Flask(__name__)
 
